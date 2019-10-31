@@ -492,7 +492,7 @@ console.log(tips, finalValues);
 * Objects and properties
 */
 /*
-// Object literal
+//Object literal
 var john = {
     firstName: 'John',
     lastName: 'Smith',
@@ -501,7 +501,8 @@ var john = {
     job: 'teacher',
     isMarried: false
 };
-
+console.log(john);
+/*
 console.log(john.firstName);
 console.log(john['lastName']);
 var x = 'birthYear';
@@ -533,9 +534,11 @@ var john = {
     job: 'teacher',
     isMarried: false,
     calcAge: function() {
-        this.age = 2018 - this.birthYear;
+        this.age = 2018 - this.birthYear; // return 2018 - birthYear;
     }
 };
+
+// console.log(john.calcAge(1990));
 
 john.calcAge();
 console.log(john);
