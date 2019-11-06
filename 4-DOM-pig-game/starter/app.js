@@ -52,8 +52,16 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
   // add current score to the player score
   scores[activePlayer] += roundScore;
   document.getElementById('score-' + activePlayer).textContent = scores[activePlayer];
-  nextPlayer();
 
+  if (scores[activePlayer] >= 20) {
+    document.getElementById('name-' + activePlayer).textContent = 'Won the game!!!!'
+    document.querySelector('.dice').style.display = 'none';
+    document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+    document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+
+  } else {
+  nextPlayer();
+  }
 });
 
 function nextPlayer() {
