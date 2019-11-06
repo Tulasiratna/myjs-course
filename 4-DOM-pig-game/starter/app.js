@@ -32,9 +32,32 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
  // random number
   var dice = Math.floor(Math.random() * 6) + 1;
  // display the result
+
  var result = document.querySelector('.dice');
  result.style.display = "";
  result.src = 'dice-' + dice + '.png';
+ // update the result if dice is not equal to 1
+
+ if (dice !== 1) {
+  roundScore += dice;
+  document.getElementById('current-' + activePlayer).textContent = roundScore;
+ } else {
+  //next player
+  activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+  roundScore = 0;
+
+  document.getElementById('current-0').textContent = 0;
+  document.getElementById('current-1').textContent = 0;
+
+  document.querySelector('.player-0-panel').classList.toggle('active');
+  document.querySelector('.player-1-panel').classList.toggle('active');
+
+
+  document.querySelector('.dice').style.display = 'none';
+
+
+
+ }
 
 });
 
