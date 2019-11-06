@@ -43,6 +43,21 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
   document.getElementById('current-' + activePlayer).textContent = roundScore;
  } else {
   //next player
+  nextPlayer();
+}
+
+});
+
+document.querySelector('.btn-hold').addEventListener('click', function() {
+  // add current score to the player score
+  scores[activePlayer] += roundScore;
+  document.getElementById('score-' + activePlayer).textContent = scores[activePlayer];
+  nextPlayer();
+
+});
+
+function nextPlayer() {
+
   activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
   roundScore = 0;
 
@@ -55,11 +70,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
   document.querySelector('.dice').style.display = 'none';
 
-
-
- }
-
-});
+};
 
 
 
