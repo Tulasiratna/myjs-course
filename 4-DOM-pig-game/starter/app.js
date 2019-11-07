@@ -42,14 +42,26 @@ console.log(globalScore);
 document.querySelector('.btn-roll').addEventListener('click', function() {
   if(playing) {
     // random number
-    var dice = Math.floor(Math.random() * 6) + 1;
+    var dice1 = Math.floor(Math.random() * 6) + 1;
+    var dice2 = Math.floor(Math.random() * 6) + 1;
+
     // display the result
 
-    var result = document.querySelector('.dice');
-    result.style.display = "";
-    result.src = 'dice-' + dice + '.png';
+    document.getElementById('dice-1').style.display = "";
+    document.getElementById('dice-2').style.display = "";
+
+    document.getElementById('dice-1').src = 'dice-' + dice1 + '.png';
+    document.getElementById('dice-2').src = 'dice-' + dice2 + '.png';
     // update the result if dice is not equal to 1
-    if(dice === 6 && lastDice ===6) {
+
+    if (dice1 !== 1 && dice2 !== 1) {
+    roundScore = dice1 + dice2;
+    document.getElementById('current-' + activePlayer).textContent = roundScore;
+    } else {
+    //next player
+    nextPlayer();
+    }
+    /*if(dice === 6 && lastDice ===6) {
       // player looses score
       scores[activePlayer] = 0;
       document.getElementById('score-' + activePlayer).textContent = 0;
@@ -64,7 +76,8 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
     lastDice = dice;
   }
-
+*/
+  }
 });
 
 document.querySelector('.btn-hold').addEventListener('click', function() {
