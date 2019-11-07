@@ -44,7 +44,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     if(dice === 6 && lastDice ===6) {
       // player looses score
       scores[activePlayer] = 0;
-      document.getElementById('score-' + activePlayer).textContent = scores[activePlayer];
+      document.getElementById('score-' + activePlayer).textContent = 0;
       nextPlayer();
     }else if (dice !== 1) {
     roundScore += dice;
