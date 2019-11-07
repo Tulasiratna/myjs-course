@@ -73,7 +73,14 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     scores[activePlayer] += roundScore;
     document.getElementById('score-' + activePlayer).textContent = scores[activePlayer];
 
-    if (scores[activePlayer] >= 20) {
+    var score = document.getElementById('final-score').value;
+    var winningScore;
+    if(score) {
+      winningScore = score;
+    }else {
+      winningScore = 100;
+    }
+    if (scores[activePlayer] >= winningScore) {
       document.getElementById('name-' + activePlayer).textContent = 'Won the game!!!!'
       document.querySelector('.dice').style.display = 'none';
       document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
