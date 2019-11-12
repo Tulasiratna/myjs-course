@@ -121,6 +121,8 @@ var fullAge = arrCalc(ages, isFullAge);
 var rates = arrCalc(ages, maxHeartRate);
 console.log(rates);
 */
+// functions returns functions
+/*
 
 function interviewQuestion(job) {
   if (job === 'teacher') {
@@ -146,4 +148,29 @@ designerQuestion('Tulasi');
 
 interviewQuestion('painter')('Mark');
 interviewQuestion('designer')('Sarah');
+*/
+
+// Immediate invoked function expression
+function game() {
+  var score = Math.random() * 10;
+  console.log(score >= 5);
+}
+
+game();
+
+(function () {
+  var score = Math.random() * 10;
+  console.log(score >= 5);
+})();
+
+(function (goodLuck) {
+  var score = Math.random() * 10;
+  console.log(score >= 5 - goodLuck);
+})(5);
+
+
+(function (goodLuck) {
+  var score = Math.random() * 10;
+  console.log(score >= 5 - goodLuck);
+})(3);
 
