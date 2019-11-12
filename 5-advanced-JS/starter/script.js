@@ -47,7 +47,7 @@ var sarah = Object.create(personProto, {
 });
 */
 
-
+/*
 // primitives
 var a = 32;
 var b = a;
@@ -84,6 +84,30 @@ mutate(age, person);
 console.log(age);
 console.log(person.city);
 
+*/
+// passing functions as arguemrnts
 
+var years = [1990, 1989, 2017, 1962, 1970];
 
+function arrCalc(years, fn) {
+  var result = [];
+  for (var i = 0; i < years.length; i++) {
+    result.push(fn(years[i]));
+  }
+
+  return result;
+}
+
+function calculateAge(element) {
+  return 2019 - element;
+}
+
+function isFullAge(element) {
+  return element >= 18;
+}
+
+var ages = arrCalc(years, calculateAge);
+console.log(ages);
+var fullAge = arrCalc(ages, isFullAge);
+console.log(fullAge);
 
