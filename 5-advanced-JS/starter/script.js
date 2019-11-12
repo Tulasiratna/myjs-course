@@ -86,6 +86,7 @@ console.log(person.city);
 
 */
 // passing functions as arguemrnts
+/*
 
 var years = [1990, 1989, 2017, 1962, 1970];
 
@@ -119,4 +120,30 @@ var fullAge = arrCalc(ages, isFullAge);
 //console.log(fullAge);
 var rates = arrCalc(ages, maxHeartRate);
 console.log(rates);
+*/
+
+function interviewQuestion(job) {
+  if (job === 'teacher') {
+    return function(name) {
+      console.log(name + ', What subject do you teach?');
+    }
+  } else if (job === 'designer') {
+    return function(name) {
+      console.log(name + ', Can you explain the differance between UI & UX?');
+    }
+  } else {
+    return function(name) {
+      console.log('Hello ' + name + ', What do you do?');
+    }
+  }
+}
+
+var teacherQuestion = interviewQuestion('teacher');
+var designerQuestion = interviewQuestion('designer');
+
+teacherQuestion('Bob');
+designerQuestion('Tulasi');
+
+interviewQuestion('painter')('Mark');
+interviewQuestion('designer')('Sarah');
 
