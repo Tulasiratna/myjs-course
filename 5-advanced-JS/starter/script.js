@@ -106,8 +106,17 @@ function isFullAge(element) {
   return element >= 18;
 }
 
+function maxHeartRate(element) {
+  if (element >= 18 && element <= 81) {
+    return Math.round(206.9 - (0.67 * element));
+  } else {
+    return -1;
+  }
+}
 var ages = arrCalc(years, calculateAge);
 console.log(ages);
 var fullAge = arrCalc(ages, isFullAge);
-console.log(fullAge);
+//console.log(fullAge);
+var rates = arrCalc(ages, maxHeartRate);
+console.log(rates);
 
