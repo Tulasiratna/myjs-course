@@ -28,7 +28,7 @@ console.log(jonas.lastName);
 console.log(divith.lastName);
 console.log(soumya.lastName);
 */
-
+/* Object.crate
 var personProto = {
   calculateAge: function() {
     console.log(2019 - this.yearOfBirth);
@@ -45,3 +45,45 @@ var sarah = Object.create(personProto, {
   yearOfBirth: { value: 1988},
   job: { value: 'engineer'}
 });
+*/
+
+
+// primitives
+var a = 32;
+var b = a;
+a = 23;
+
+console.log(a);
+console.log(b);
+
+// objects
+
+var person1 = {
+  name: 'Lilly',
+  age: 20
+};
+var person2 = person1;
+person1.age = 25;
+console.log(person1.age);
+console.log(person2.age);
+
+// functions
+var age = 28;
+var person = {
+  name: 'Tulasi',
+  city: 'Oslo'
+};
+
+function mutate(a, b) {
+  a = 27;
+  b.city = 'Stockholm';
+}
+
+mutate(age, person);
+
+console.log(age);
+console.log(person.city);
+
+
+
+
