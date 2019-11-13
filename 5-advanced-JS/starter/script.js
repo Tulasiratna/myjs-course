@@ -237,3 +237,29 @@ johnFriendly('morning')
 var sonyFormal = john.presentation.bind(sony, 'formal');
 sonyFormal('afternoon');
 
+// another example
+
+var years = [1990, 1989, 2017, 1962, 1970];
+
+function arrCalc(years, fn) {
+  var result = [];
+  for (var i = 0; i < years.length; i++) {
+    result.push(fn(years[i]));
+  }
+
+  return result;
+}
+
+function calculateAge(element) {
+  return 2019 - element;
+}
+
+function isFullAge(limit, element) {
+  return element >= limit;
+}
+
+var ages = arrCalc(years, calculateAge);
+console.log(ages);
+
+var fullIndia = arrCalc(ages, isFullAge.bind(this, 21));
+console.log(fullIndia);
