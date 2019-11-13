@@ -32,7 +32,13 @@ Question.prototype.displayQuestion = function() {
       console.log(i + ': ' + this.answers[i]);
     }
   }
-
+Question.prototype.correctAnswer = function() {
+  if(answer === this.correct) {
+    console.log('Well done!, Correct answer');
+  } else {
+    console.log('wrong answer, better luck next time');
+  }
+}
 
 
 var q1 = new Question('Is Udemy is best for learning code?',
@@ -50,3 +56,6 @@ var questions = [q1, q2, q3];
 var question = [Math.floor(Math.random() * questions.length)];
 
 questions[question].displayQuestion();
+
+var answer = parseInt(prompt('please select your answer'));
+questions[question].correctAnswer();
