@@ -175,6 +175,7 @@ game();
   console.log(score >= 5 - goodLuck);
 })(3);
 */
+// closures
 
 function retirement(retirementAge) {
   var a = ' years left untill retirement';
@@ -188,3 +189,24 @@ var retirementSweden = retirement(65);
 var retirementIndia = retirement(60);
 retirementSweden(1990);
 retirement(60)(1990);
+// one more example for closure
+function interviewQuestion(job) {
+  return function(name) {
+    if (job === 'teacher') {
+      console.log(name + ', What subject do you teach?');
+  } else if (job === 'designer') {
+      console.log(name + ', Can you explain the differance between UI & UX?');
+    }else{
+      console.log('Hello ' + name + ', What do you do?');
+    }
+  }
+}
+/*
+var teacherQuestion = interviewQuestion('teacher');
+var designerQuestion = interviewQuestion('designer');
+
+teacherQuestion('Bob');
+designerQuestion('Tulasi');
+*/
+interviewQuestion('painter')('Mark');
+interviewQuestion('designer')('Sarah')
