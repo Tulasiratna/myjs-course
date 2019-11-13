@@ -230,10 +230,15 @@ var sony = {
   age: 32,
   job: 'teacher'
 };
-
+// call method
 john.presentation.call(sony, 'formal', 'afternoon');
+// apply method
+john.presentation.apply(sony, ['formal', 'afternoon']);
+
+// bind method
 var johnFriendly = john.presentation.bind(john,'friendly');
 johnFriendly('morning')
+
 var sonyFormal = john.presentation.bind(sony, 'formal');
 sonyFormal('afternoon');
 
@@ -263,3 +268,4 @@ console.log(ages);
 
 var fullIndia = arrCalc(ages, isFullAge.bind(this, 21));
 console.log(fullIndia);
+
