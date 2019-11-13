@@ -151,6 +151,7 @@ interviewQuestion('designer')('Sarah');
 */
 
 // Immediate invoked function expression
+/*
 function game() {
   var score = Math.random() * 10;
   console.log(score >= 5);
@@ -173,4 +174,17 @@ game();
   var score = Math.random() * 10;
   console.log(score >= 5 - goodLuck);
 })(3);
+*/
 
+function retirement(retirementAge) {
+  var a = ' years left untill retirement';
+  return function(yearOfBirth) {
+    var age = 2019 - yearOfBirth;
+    console.log((retirementAge - age) + a);
+  }
+}
+
+var retirementSweden = retirement(65);
+var retirementIndia = retirement(60);
+retirementSweden(1990);
+retirement(60)(1990);
