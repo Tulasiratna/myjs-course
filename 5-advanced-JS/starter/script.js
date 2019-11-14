@@ -1,4 +1,4 @@
-/*
+
 var jonas = {
   name: 'Jonas',
   yearOfBirth: 1989,
@@ -27,8 +27,8 @@ soumya.calculateAge();
 console.log(jonas.lastName);
 console.log(divith.lastName);
 console.log(soumya.lastName);
-*/
-/* Object.crate
+
+ // Object.create
 var personProto = {
   calculateAge: function() {
     console.log(2019 - this.yearOfBirth);
@@ -45,9 +45,9 @@ var sarah = Object.create(personProto, {
   yearOfBirth: { value: 1988},
   job: { value: 'engineer'}
 });
-*/
 
-/*
+
+
 // primitives
 var a = 32;
 var b = a;
@@ -84,9 +84,9 @@ mutate(age, person);
 console.log(age);
 console.log(person.city);
 
-*/
+
 // passing functions as arguemrnts
-/*
+
 
 var years = [1990, 1989, 2017, 1962, 1970];
 
@@ -120,9 +120,9 @@ var fullAge = arrCalc(ages, isFullAge);
 //console.log(fullAge);
 var rates = arrCalc(ages, maxHeartRate);
 console.log(rates);
-*/
+
 // functions returns functions
-/*
+
 
 function interviewQuestion(job) {
   if (job === 'teacher') {
@@ -148,10 +148,9 @@ designerQuestion('Tulasi');
 
 interviewQuestion('painter')('Mark');
 interviewQuestion('designer')('Sarah');
-*/
 
-// Immediate invoked function expression
-/*
+// Immediate invoked function expression (IIFE)
+
 function game() {
   var score = Math.random() * 10;
   console.log(score >= 5);
@@ -174,9 +173,9 @@ game();
   var score = Math.random() * 10;
   console.log(score >= 5 - goodLuck);
 })(3);
-*/
+
 // closures
-/*
+
 function retirement(retirementAge) {
   var a = ' years left untill retirement';
   return function(yearOfBirth) {
@@ -209,8 +208,9 @@ function interviewQuestion(job) {
 
 interviewQuestion('painter')('Mark');
 interviewQuestion('designer')('Sarah')
-*/
+
 // bind, call and apply
+
 var john = {
   name: 'John',
   age: 29,
@@ -232,6 +232,7 @@ var sony = {
 };
 // call method
 john.presentation.call(sony, 'formal', 'afternoon');
+
 // apply method
 john.presentation.apply(sony, ['formal', 'afternoon']);
 
@@ -268,4 +269,7 @@ console.log(ages);
 
 var fullIndia = arrCalc(ages, isFullAge.bind(this, 21));
 console.log(fullIndia);
+
+
+
 
