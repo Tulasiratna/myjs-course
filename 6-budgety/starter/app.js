@@ -35,6 +35,23 @@ var UIController = (function() {
 // APP CONTROLLER
 var Controller = (function(bgtCtrl, UICtrl) {
 
+  var setEventListeners = function() {
+    var DOM = UICtrl.getDOMstrings;
+
+    var key = document.querySelector('.add__btn');
+    key.addEventListener('click', addItem);
+    //console.log('Key was clicked');
+
+    document.addEventListener('keypress', function(event) {
+    //console.log(event);
+      if (event.keyCode === 13 || event.which === 13) {
+      //console.log('ENTER key was pressed');
+      addItem();
+    }
+  });
+
+  };
+
   var DOM = UICtrl.getDOMstrings;
 
 
@@ -57,19 +74,28 @@ var addItem = function() {
   //console.log('just for testing');
 
 };
+  /*******setEventListeners***************/
+  /*******setEventListeners***************/
 
-  var key = document.querySelector('.add__btn');
-  key.addEventListener('click', addItem);
-    //console.log('Key was clicked');
 
-  document.addEventListener('keypress', function(event) {
-    //console.log(event);
-    if (event.keyCode === 13 || event.which === 13) {
-      //console.log('ENTER key was pressed');
-      addItem();
+     //  var key = document.querySelector('.add__btn');
+     //  key.addEventListener('click', addItem);
+     //    //console.log('Key was clicked');
+
+     //  document.addEventListener('keypress', function(event) {
+     //    //console.log(event);
+     //    if (event.keyCode === 13 || event.which === 13) {
+     //      //console.log('ENTER key was pressed');
+     //      addItem();
+     //    }
+     // });
+  return {
+    init: function() {
+      setEventListeners();
     }
- });
-
+  };
 
 
 })(budgetController, UIController);
+
+Controller.init();
