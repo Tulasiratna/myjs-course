@@ -1,13 +1,13 @@
 // BUDGET CONTROLLER
 var budgetController = (function() {
 
-  var expense = function(id, description, value) {
+  var Expense = function(id, description, value) {
     this.id = id;
     this.description = description;
     this.value = value;
   };
 
- var income = function(id, description, value) {
+ var Income = function(id, description, value) {
     this.id = id;
     this.description = description;
     this.value = value;
@@ -19,13 +19,34 @@ var budgetController = (function() {
 
 
   var data = {
-    allItems = {
+    allItems: {
       exp: [],
       inc: []
     },
-    total = {
+    total: {
       exp: 0,
       inc: 0
+    }
+  };
+
+  return {
+    addItem: function(type, des, val) {
+    var newItem, ID;
+      if(data.allItems[type].length > 0) {
+        ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+      }else {
+        ID = 0;
+      }
+      if(type === 'exp') {
+       newItem = new Expense(ID, des, val);
+      } else {
+        newItem = new Income(ID, des, val);
+      }
+      data.allItems[type].push(newItem);
+      return newItem;
+    },
+    testing: function() {
+      console.log(data);
     }
   };
 
@@ -60,7 +81,7 @@ var UIController = (function() {
 })();
 
 // APP CONTROLLER
-var Controller = (function(bgtCtrl, UICtrl) {
+var Controller = (function(bdgtCtrl, UICtrl) {
 
   var setEventListeners = function() {
     var DOM = UICtrl.getDOMstrings;
@@ -83,12 +104,15 @@ var Controller = (function(bgtCtrl, UICtrl) {
 
 
 var addItem = function() {
-
+  var input, newItem;
   // get the input field data
-  var input = UICtrl.getInput();
-  console.log(input);
+ input = UICtrl.getInput();
+  //console.log(input);
 
   //add the item to the budget controller
+  newItem = bdgtCtrl.addItem(input.type, input.description, input.value);
+  //console.log(newItem);
+
 
   // add the item to the UI
 
