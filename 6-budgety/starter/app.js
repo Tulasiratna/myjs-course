@@ -36,7 +36,7 @@ var budgetController = (function() {
       if(data.allItems[type].length > 0) {
         ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
       }else {
-        ID = 0;
+        ID = 1;
       }
 
       // create newItem based on 'income' or 'expense'
@@ -78,7 +78,7 @@ var UIController = (function() {
       return {
         type: document.querySelector(DOMstrings.inputType).value,
         description: document.querySelector(DOMstrings.inputDescription).value,
-        value: document.querySelector(DOMstrings.inputValue).value
+        value: parseFloat(document.querySelector(DOMstrings.inputValue).value)
       };
     },
 
@@ -160,30 +160,35 @@ var Controller = (function(bdgtCtrl, UICtrl) {
 
   };
 
+var updateBudget = function() {
 
-var addItem = function() {
-  var input, newItem;
-  // get the input field data
- input = UICtrl.getInput();
-  //console.log(input);
+  // calculate budget
 
-  //add the item to the budget controller
-  newItem = bdgtCtrl.addItem(input.type, input.description, input.value);
-  //console.log(newItem);
-
-
-  // add the item to the UI
-  UICtrl.addListItem(newItem, input.type);
-  // clear fields
-  UICtrl.clearFields();
-
-  // budget calculation
+  // return budget
 
   //display budget on the UI
 
+};
 
 
-  //console.log('just for testing');
+var addItem = function() {
+  var input, newItem;
+  //1. get the input field data
+  input = UICtrl.getInput();
+  if (input.description !== "" && !isNaN(input.value) && iput.value > 0) {
+  //2.add the item to the budget controller
+    newItem = bdgtCtrl.addItem(input.type, input.description, input.value);
+
+    // 3.add the item to the UI
+    UICtrl.addListItem(newItem, input.type);
+
+    // 4.clear fields
+    UICtrl.clearFields();
+
+   //5.calculate and update budget
+    updateBudget();
+
+  }
 
 };
   /*******setEventListeners***************/
