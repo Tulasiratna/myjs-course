@@ -17,6 +17,14 @@ var budgetController = (function() {
   // allIncomes = [];
   // totalExpenses = 0;
 
+  var calculateTotal = function(type) {
+    sum = 0;
+    data.allItems[type].forEach(function(current) {
+      sum += current.value;
+    })
+    data.total[type] = sum;
+  };
+
 
   var data = {
     allItems: {
@@ -51,6 +59,12 @@ var budgetController = (function() {
 
       // return newItem
       return newItem;
+    },
+    calculateBudget: function() {
+      calculateTotal('inc');
+      calculateTotal('exp');
+
+
     },
     testing: function() {
       console.log(data);
@@ -163,6 +177,7 @@ var Controller = (function(bdgtCtrl, UICtrl) {
 var updateBudget = function() {
 
   // calculate budget
+  bdgtCtrl.calculateBudget();
 
   // return budget
 
