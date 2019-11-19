@@ -67,11 +67,12 @@ var budgetController = (function() {
       calculateTotal('inc');
       calculateTotal('exp');
     // calculate budget: total income - tol expense
-    data.budget = data.total.inc - data.total.exp;
+      data.budget = data.total.inc - data.total.exp;
 
     // calulate percentage
-    data.percentage = Math.round((data.total.exp/data.total.inc) * 100);
-
+      if(data.total.inc > 0) {
+        data.percentage = Math.round((data.total.exp / data.total.inc) * 100);
+      }
     },
 
     getBudget: function() {
@@ -196,7 +197,7 @@ var updateBudget = function() {
   bdgtCtrl.calculateBudget();
 
   // return budget
-  var budget = budgetCtrl.getBudget();
+  var budget = bdgtCtrl.getBudget();
   console.log(budget);
 
   //display budget on the UI
@@ -208,7 +209,7 @@ var addItem = function() {
   var input, newItem;
   //1. get the input field data
   input = UICtrl.getInput();
-  if (input.description !== "" && !isNaN(input.value) && iput.value > 0) {
+  if (input.description !== "" && !isNaN(input.value) && input.value > 0) {
   //2.add the item to the budget controller
     newItem = bdgtCtrl.addItem(input.type, input.description, input.value);
 
