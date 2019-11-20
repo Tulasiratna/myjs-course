@@ -103,7 +103,8 @@ var UIController = (function() {
     budgetField: '.budget__value',
     incomeField: '.budget__income--value',
     expensesField: '.budget__expenses--value',
-    percentageField: '.budget__expenses--percentage'
+    percentageField: '.budget__expenses--percentage',
+    container: '.container'
   };
 
 
@@ -192,10 +193,9 @@ var UIController = (function() {
 var Controller = (function(bdgtCtrl, UICtrl) {
 
   var setEventListeners = function() {
-    var DOM = UICtrl.getDOMstrings;
+    var DOM = UICtrl.getDOMstrings();
 
-    var key = document.querySelector('.add__btn');
-    key.addEventListener('click', addItem);
+    document.querySelector(DOM.inputBtn).addEventListener('click', addItem);
     //console.log('Key was clicked');
 
     document.addEventListener('keypress', function(event) {
@@ -205,6 +205,8 @@ var Controller = (function(bdgtCtrl, UICtrl) {
       addItem();
     }
   });
+
+    document.querySelector(DOM.container).addEventListener('click', deleteItem);
 
   };
 
@@ -242,6 +244,11 @@ var addItem = function() {
 
   }
 
+};
+
+var deleteItem = function(event) {
+  var itemID;
+  itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
 };
   /*******setEventListeners***************/
   /*******setEventListeners***************/
