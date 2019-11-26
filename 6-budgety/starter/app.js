@@ -168,6 +168,13 @@ var UIController = (function() {
 
   },
 
+  deleteListItem: function(selectorID) {
+    var el;
+    el = document.getElementById(selectorID);
+    el.parentNode.removeChild(el);
+
+  },
+
   clearFields: function() {
 
     var fields, fieldsArr;
@@ -212,18 +219,18 @@ var Controller = (function(bdgtCtrl, UICtrl) {
   var setEventListeners = function() {
     var DOM = UICtrl.getDOMstrings();
 
-    document.querySelector(DOM.inputBtn).addEventListener('click', addItem);
+    document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
     //console.log('Key was clicked');
 
     document.addEventListener('keypress', function(event) {
     //console.log(event);
       if (event.keyCode === 13 || event.which === 13) {
       //console.log('ENTER key was pressed');
-      addItem();
+      ctrlAddItem();
     }
   });
 
-    document.querySelector(DOM.container).addEventListener('click', deleteItem);
+    document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
 
   };
 
@@ -242,7 +249,7 @@ var updateBudget = function() {
 };
 
 
-var addItem = function() {
+var ctrlAddItem = function() {
   var input, newItem;
   //1. get the input field data
   input = UICtrl.getInput();
@@ -263,7 +270,7 @@ var addItem = function() {
 
 };
 
-var deleteItem = function(event) {
+var ctrlDeleteItem = function(event) {
   var itemID, splitID, type, ID;
   itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
 
@@ -278,9 +285,10 @@ var deleteItem = function(event) {
 
 
     // delete the item from the UI
+    UICtrl.deleteListItem(itemID);
 
     // update & show the budget
-
+    updateBudget();
   }
 };
   /*******setEventListeners***************/
