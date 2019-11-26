@@ -248,6 +248,14 @@ var updateBudget = function() {
 
 };
 
+var updatePercentages = function() {
+  // calculate percentages
+
+  // read percentages from budget controller
+
+  // update new percentages in the UI
+};
+
 
 var ctrlAddItem = function() {
   var input, newItem;
