@@ -251,6 +251,15 @@ var UIController = (function() {
     });
   },
 
+  formatNumber: function(num, type) {
+    var numSplit, intiger, decimal;
+
+    num = Math.abs(num); // abs removes the signs (+/-)
+    num.toFixed(2);
+
+
+  },
+
     getDOMstrings: function() {
       return DOMstrings;
     }
