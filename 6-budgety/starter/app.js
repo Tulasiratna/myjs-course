@@ -152,6 +152,34 @@ var UIController = (function() {
     expensePercentage: '.item__percentage'
   };
 
+  var formatNumber = function(num, type) {
+        var numSplit, intiger, decimal, type;
+        /*
+            + or - before number
+            exactly 2 decimal points
+            comma separating the thousands
+
+            2310.4567 -> + 2,310.46
+            2000 -> + 2,000.00
+            */
+
+        num = Math.abs(num);
+        num = num.toFixed(2);
+
+        numSplit = num.split('.');
+
+        intiger = numSplit[0];
+        if (intiger.length > 3) {
+            intiger = intiger.substr(0, intiger.length - 3) + ',' + intiger.substr(intiger.length - 3, 3); //input 23510, output 23,510
+        }
+
+        decimal = numSplit[1];
+
+        return (type === 'exp' ? '-' : '+') + ' ' + intiger + '.' + decimal;
+
+    };
+
+
 
   return {
     getInput: function() {
@@ -186,7 +214,7 @@ var UIController = (function() {
 
     newHtml = html.replace('%id%', obj.id);
     newHtml = newHtml.replace('%description%', obj.description);
-    newHtml = newHtml.replace('%value%', obj.value);
+    newHtml = newHtml.replace('%value%', formatNumber(obj.value, type));
 
     // insert HTML into the DOM
 
@@ -251,21 +279,10 @@ var UIController = (function() {
     });
   },
 
-  formatNumber: function(num, type) {
-    var numSplit, intiger, decimal;
-
-    num = Math.abs(num); // abs removes the signs (+/-)
-    num.toFixed(2);
-
-
-  },
-
     getDOMstrings: function() {
       return DOMstrings;
     }
   };
-
-
 
 })();
 
