@@ -18,12 +18,21 @@ function getRecipe() {
   setTimeout (() => {
     const recipeID = [123, 234, 345, 456, 567];
     console.log(recipeID);
-    setTimeout ((id) => {
+    setTimeout (id => {
       const recipe = {
         title: 'Kylling Kebab',
         publisher: 'Tulasi'
       };
       console.log(`${id}: ${recipe.title}`);
+      setTimeout (publisher => {
+        const recipe2 = {
+          title: 'Ice-cream',
+          publisher: 'Tulasi'
+        };
+        //console.log(recipe);
+        console.log(recipe2);
+
+      }, 1000, recipe.publisher);
     }, 1000, recipeID[1]);
   }, 2000);
 }
