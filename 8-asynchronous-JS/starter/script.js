@@ -42,7 +42,7 @@ getRecipe();
 ************** Functions **************************
 ***************************************************/
 
-const getID = new Promise ((resolve, reject) => {
+const getIDs = new Promise ((resolve, reject) => {
   setTimeout (() => {
     resolve([123, 234, 345, 456, 567]);
   }, 1500);
@@ -77,10 +77,10 @@ const getPublisher = publisher => {
 /********************************************************************
 ***************************** Promises ******************************
 *********************************************************************/
-getID
-.then(ID => {
-  console.log(ID); // then for resolve
-  return getRecipe(ID[3]);
+getIDs
+.then(IDs => {
+  console.log(IDs); // then for resolve
+  return getRecipe(IDs[3]);
 })
 .then(recipe => {
   console.log(recipe);
