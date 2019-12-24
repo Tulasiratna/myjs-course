@@ -38,9 +38,9 @@ function getRecipe() {
 }
 getRecipe();
 */
-***************************************************
+/***************************************************
 ************** Functions **************************
-***************************************************
+***************************************************/
 
 const getID = new Promise ((resolve, reject) => {
   setTimeout (() => {
@@ -60,10 +60,23 @@ const getRecipe = recipeID => {
     }, 1500, recipeID)
   });
 };
+
+const getPublisher = publisher => {
+  return new Promise ((resolve, reject) => {
+    setTimeout(pub => {
+      const recipe2 = {
+            title: 'Ice-cream',
+            publisher: 'Tulasi'
+          };
+          resolve(`${pub}: ${recipe2.title}`);
+
+      }, 1000, publisher);
+  });
+};
 // if promise is resolved(.then) or rejected(.catch)
-********************************************************************
+/********************************************************************
 ***************************** Promises ******************************
-*********************************************************************
+*********************************************************************/
 getID
 .then(ID => {
   console.log(ID); // then for resolve
@@ -71,6 +84,10 @@ getID
 })
 .then(recipe => {
   console.log(recipe);
+  return getPublisher('Tulasi');
+})
+.then(recipe2 => {
+  console.log(recipe2);
 })
 .catch(error => {
   console.log('Error Found!!!!'); // catch for reject
