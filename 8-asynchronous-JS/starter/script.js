@@ -41,7 +41,6 @@ getRecipe();
 /***************************************************
 ************** Functions **************************
 ***************************************************/
-
 const getIDs = new Promise ((resolve, reject) => {
   setTimeout (() => {
     resolve([123, 234, 345, 456, 567]);
@@ -73,10 +72,12 @@ const getPublisher = publisher => {
       }, 1000, publisher);
   });
 };
+
 // if promise is resolved(.then) or rejected(.catch)
 /********************************************************************
 ***************************** Promises ******************************
 *********************************************************************/
+/*
 getIDs
 .then(IDs => {
   console.log(IDs); // then for resolve
@@ -92,3 +93,19 @@ getIDs
 .catch(error => {
   console.log('Error Found!!!!'); // catch for reject
 })
+*/
+async function getRecipesAW() {
+  const IDs = await getIDs;
+  console.log(IDs);
+  const recipe = await getRecipe(IDs[3]);
+  console.log(recipe);
+  const publisher = await getPublisher('Tulasi');
+  console.log(publisher);
+
+  return recipe;
+}
+
+//getRecipesAW();
+getRecipesAW().then(resolve => {
+  console.log(`${resolve} is always best ever dish`);
+  });
