@@ -38,6 +38,9 @@ function getRecipe() {
 }
 getRecipe();
 */
+***************************************************
+************** Functions **************************
+***************************************************
 
 const getID = new Promise ((resolve, reject) => {
   setTimeout (() => {
@@ -46,11 +49,28 @@ const getID = new Promise ((resolve, reject) => {
 
 });
 
+const getRecipe = recipeID => {
+  return new Promise ((resolve, reject) => {
+    setTimeout(ID => {
+      const recipe = {
+          title: 'Kylling Kebab',
+          publisher: 'Tulasi'
+        };
+        resolve(`${ID}: ${recipe.title}`);
+    }, 1500, recipeID)
+  });
+};
 // if promise is resolved(.then) or rejected(.catch)
-
+********************************************************************
+***************************** Promises ******************************
+*********************************************************************
 getID
 .then(ID => {
   console.log(ID); // then for resolve
+  return getRecipe(ID[3]);
+})
+.then(recipe => {
+  console.log(recipe);
 })
 .catch(error => {
   console.log('Error Found!!!!'); // catch for reject
