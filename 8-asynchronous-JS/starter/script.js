@@ -13,7 +13,7 @@
 // first();
 //end();
 
-
+/*
 function getRecipe() {
   setTimeout (() => {
     const recipeID = [123, 234, 345, 456, 567];
@@ -37,3 +37,21 @@ function getRecipe() {
   }, 2000);
 }
 getRecipe();
+*/
+
+const getID = new Promise ((resolve, reject) => {
+  setTimeout (() => {
+    resolve([123, 234, 345, 456, 567]);
+  }, 1500);
+
+});
+
+// if promise is resolved(.then) or rejected(.catch)
+
+getID
+.then(ID => {
+  console.log(ID); // then for resolve
+})
+.catch(error => {
+  console.log('Error Found!!!!'); // catch for reject
+})
