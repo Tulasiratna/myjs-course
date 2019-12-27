@@ -115,12 +115,12 @@ getRecipesAW().then(resolve => {
 function getWeather(woeid) {
   fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}/`)
   .then(response => {
-    console.log(response);
+    //console.log(response);
     return response.json();
   })
   .then(data => {
     const today = data.consolidated_weather[3];
-    console.log(`Today's Temperature in ${data.title} is between ${today.min_temp} and ${today.max_temp}`);
+    console.log(`Today's Temperature in ${data.title} between ${today.min_temp} and ${today.max_temp}`);
   })
   .catch(error => {
     console.log(error);
@@ -128,3 +128,27 @@ function getWeather(woeid) {
 }
 getWeather(44418);
 getWeather(2487956);
+
+async function getWeatherAW(woeid) {
+  try {
+    const response = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}/`)
+    const data = await response.json();
+    //console.log(data);
+
+    const tomarrow = data.consolidated_weather[0];
+    console.log(`Tomarrow's Temperature in ${data.title} between ${tomarrow.min_temp} and ${tomarrow.max_temp}`);
+    return data;
+  } catch(error) {
+    alert(error);
+  }
+}
+let dataLondon;
+getWeatherAW(44418).then(data => {
+  dataLondon = data;
+  console.log(dataLondon);
+});
+let dataSanFransisco;
+getWeatherAW(2487956).then(data => {
+  dataSanFransisco = data;
+  console.log(dataSanFransisco);
+});
