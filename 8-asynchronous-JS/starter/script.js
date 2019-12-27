@@ -41,6 +41,7 @@ getRecipe();
 /***************************************************
 ************** Functions **************************
 ***************************************************/
+/*
 const getIDs = new Promise ((resolve, reject) => {
   setTimeout (() => {
     resolve([123, 234, 345, 456, 567]);
@@ -72,7 +73,7 @@ const getPublisher = publisher => {
       }, 1000, publisher);
   });
 };
-
+*/
 // if promise is resolved(.then) or rejected(.catch)
 /********************************************************************
 ***************************** Promises ******************************
@@ -94,6 +95,7 @@ getIDs
   console.log('Error Found!!!!'); // catch for reject
 })
 */
+/*
 async function getRecipesAW() {
   const IDs = await getIDs;
   console.log(IDs);
@@ -109,3 +111,20 @@ async function getRecipesAW() {
 getRecipesAW().then(resolve => {
   console.log(`${resolve} is always best ever dish`);
   });
+*/
+function getWeather(woeid) {
+  fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}/`)
+  .then(response => {
+    console.log(response);
+    return response.json();
+  })
+  .then(data => {
+    const today = data.consolidated_weather[3];
+    console.log(`Today's Temperature in ${data.title} is between ${today.min_temp} and ${today.max_temp}`);
+  })
+  .catch(error => {
+    console.log(error);
+  })
+}
+getWeather(44418);
+getWeather(2487956);
