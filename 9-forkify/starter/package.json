@@ -4,12 +4,16 @@
   "description": "forkify project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
+
   },
   "author": "Tulasi Ratna",
   "license": "ISC",
   "devDependencies": {
-    "webpack": "^4.41.5"
+    "webpack": "^4.2.0",
+    "webpack-cli": "^2.0.12",
+    "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {}
 }
