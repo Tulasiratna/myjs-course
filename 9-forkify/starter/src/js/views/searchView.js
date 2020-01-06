@@ -30,6 +30,7 @@ export const limitRecipeTitle = (title, limit = 17) => {
       return acc + cur.length;
 
     }, 0);
+    // return result
     return `${newTitle.join(' ')} ...`;
 
   }
