@@ -16,7 +16,7 @@ const state = {};
 const cntrlSearch = async () => {
   // get query from view
   const query = searchView.getInput();
-  console.log(query);
+  //console.log(query);
 
   if (query) {
     //2. new search object and add it to state
@@ -40,7 +40,18 @@ elements.searchForm.addEventListener('submit', event => {
   event.preventDefault();
   cntrlSearch();
 
+});
 
+elements.searchResultPage.addEventListener('click', event => {
+  const btn = event.target.closest('.btn-inline');
+  if (btn) {
+    const goToPage = parseInt(btn.dataset.goto, 10);
+    searchView.clearResults();
+
+    searchView.renderResults(state.search.result, goToPage);
+
+
+  }
 });
 
 
