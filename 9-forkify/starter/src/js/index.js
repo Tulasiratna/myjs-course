@@ -17,9 +17,8 @@ const state = {};
 *****************************************************/
 const cntrlSearch = async () => {
   // get query from view
-  const query = searchView.getInput();
-  //console.log(query);
-
+  //const query = searchView.getInput();
+const query = 'pizza';
   if (query) {
     //2. new search object and add it to state
     state.search = new Search(query);
@@ -47,6 +46,12 @@ const cntrlSearch = async () => {
 }
 
 elements.searchForm.addEventListener('submit', event => {
+  event.preventDefault();
+  cntrlSearch();
+
+});
+
+window.addEventListener('load', event => {
   event.preventDefault();
   cntrlSearch();
 
@@ -84,6 +89,8 @@ const cntrlRecipe = async () => {
 
     // create new recipe object
     state.recipe = new Recipe(id);
+
+    window.r = state.recipe;
 
     try {
 
