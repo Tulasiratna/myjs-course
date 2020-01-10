@@ -28,12 +28,20 @@ const cntrlSearch = async () => {
     searchView.clearInput();
     searchView.clearResults();
     renderLoader(elements.searchRes);
-    //4. serach for recipes
+
+    try {
+      //4. serach for recipes
     await state.search.getResults();
 
     //5. render results on UI
     clearLoader();
     searchView.renderResults(state.search.result);
+
+    } catch(error) {
+      alert('something wrong with the search...');
+      clearLoader();
+    }
+
   }
 
 }
@@ -57,9 +65,46 @@ elements.searchResultPage.addEventListener('click', event => {
 });
 
 
-/***
-Recipe controller
-**/
-const r = new Recipe(46956);
-r.getRecipe();
-console.log(r);
+/*****************************************************
+*************** RECIPE CONTROLLER ********************
+*****************************************************/
+/******* just for testing ****************************************
+      const r = new Recipe(46956);
+      r.getRecipe();
+      console.log(r);
+**********************************/
+
+const cntrlRecipe = async () => {
+  // get ID from url
+  const id = window.location.hash.replace('#', '');
+  console.log(id);
+
+  if (id) {
+    // prepare UI for changes
+
+    // create new recipe object
+    state.recipe = new Recipe(id);
+
+    try {
+
+      // get recipe data
+    await state.recipe.getRecipe();
+    // calculate servings and time
+    state.recipe.calcTime();
+    state.recipe.calcServings();
+
+    //render recipe
+    console.log(state.recipe);
+
+    } catch(error) {
+      alert('Error processing recipe!!!!!!!');
+    }
+
+  }
+
+};
+
+//window.addEventListener('hashchange', cntrlRecipe);
+//window.addEventListener('load', cntrlRecipe);
+['hashchange', 'load'].forEach(event => window.addEventListener(event, cntrlRecipe));
+
