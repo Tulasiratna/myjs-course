@@ -119,3 +119,25 @@ const cntrlRecipe = async () => {
 //window.addEventListener('load', cntrlRecipe);
 ['hashchange', 'load'].forEach(event => window.addEventListener(event, cntrlRecipe));
 
+// handling recipe when button clicks
+elements.recipe.addEventListener('click', event => {
+  // * means child element (event matches with the btn-decrease and btn-decrease child elemetns)
+
+  if (event.target.matches('.btn-decrease, .btn-decrease *')) {
+    // decrease when button clicks
+    if (state.recipe.servings > 1) {
+      state.recipe.updateServings('dec');
+      recipeView.updateServingsIngredients(state.recipe);
+    }
+
+  } else if (event.target.matches('.btn-increase, .btn-increase *')) {
+    // increase when button clicks
+    state.recipe.updateServings('inc');
+    recipeView.updateServingsIngredients(state.recipe);
+
+
+
+  }
+  console.log(state.recipe);
+
+});
